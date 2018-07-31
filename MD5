@@ -1,0 +1,17 @@
+2aa7b62c5d2a2dc10ed5b74f342fa7e2 *DESCRIPTION
+5953faca224b4d5acc8dc2892f8e1ba0 *NAMESPACE
+06a1f8f1f555ede82ad81660465256a6 *R/LVGP_fit.R
+0c4ae25df0aa5f7e5d4bd3492954a5e8 *R/LVGP_plot.R
+4d82414de3655c265ea55a27e5762591 *R/LVGP_predict.R
+18555349f7cc15a481a68dfba720f6b0 *R/corr_mat.R
+7f3ea9c83653591c9c230a77c1124983 *R/example-data.R
+d9e758f3be330788f7c9bf576903b9ee *R/neg_log_l.R
+f2c23856dd741870417b20566c5f67ec *R/to_latent.R
+d1f56bc828834b47c70b75d20e99ee87 *data/math_example.rda
+b6396aaa2ed89c6b94148e49bc59eb00 *man/LVGP_fit.Rd
+0122e69005b14436d5a153334a181111 *man/LVGP_plot.Rd
+3d58e9c956da9b6a372362d1e0000e4f *man/LVGP_predict.Rd
+188cce3be0719ab5aa88165e28cdad5e *man/corr_mat.Rd
+af3ef54dc242ede495ceb08c8923dd69 *man/math_example.Rd
+ff7d43746bbf8df579f8bd2993c5986d *man/neg_log_l.Rd
+3e5bf039a5fba388ac73d2f2fb3e225d *man/to_latent.Rd
