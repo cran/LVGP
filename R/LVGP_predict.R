@@ -41,15 +41,15 @@ LVGP_predict <-  function(X_new, model, MSE_on = 0){
   p_all <- model$data$p_all
   if (is.null(nrow(X_new))) {
     if (length(X_new) != p_all){
-      stop('    The dimension of X_new is not correct!')
+      stop('    The dimensionality of X_new is not correct!')
     }
   } else {
     if (ncol(X_new) != p_all){
-      stop('    The dimension of X_new is not correct!')
+      stop('    The dimensionality of X_new is not correct!')
     }
   }
   p_qual <- model$data$p_qual
-  p_quant <- model$data$p_quant
+  #p_quant <- model$data$p_quant
 
   X_quant_min <- model$data$X_quant_min
   X_quant_max <- model$data$X_quant_max
@@ -128,12 +128,12 @@ LVGP_predict <-  function(X_new, model, MSE_on = 0){
   if (MSE_on) {
     # import relevant quantities
     sigma2 <- model$fit_detail$sigma2
-    LTinv <- model$fit_detail$LTinv
+    Linv <- model$fit_detail$Linv
     MTRinvM <- model$fit_detail$MTRinvM
-    MTLinv <- model$fit_detail$MTLinv
+    LinvM <- model$fit_detail$LinvM
 
-    temp <- LTinv%*%R_old_new
-    W <- 1-MTLinv%*%temp
+    temp <- Linv%*%R_old_new
+    W <- 1-t(LinvM)%*%temp
     MSE <- sigma2*(R_new_new-t(temp)%*%temp+t(W)%*%W/MTRinvM)*((Y_max-Y_min)^2)
     prediction$MSE <- MSE
   }

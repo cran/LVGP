@@ -2,21 +2,22 @@ Package: LVGP
 Type: Package
 Title: Latent Variable Gaussian Process Modeling with Qualitative and
         Quantitative Input Variables
-Version: 2.1.3
+Version: 2.1.4
 Author: Siyu Tao, Yichi Zhang
 Maintainer: Siyu Tao <siyutao2020@u.northwestern.edu>
-Description: Fit response surfaces for datasets with latent-variable Gaussian process modeling, predict responses for new inputs, and plot latent variables locations in the latent space (1D or 2D).
+Description: Fit response surfaces for datasets with latent-variable Gaussian process modeling, predict responses for new inputs, and plot latent variables locations in the latent space (only 1D or 2D).
     The input variables of the datasets can be quantitative, qualitative/categorical or mixed.
     The output variable of the datasets is a scalar (quantitative).
-    The method is published in "A Latent Variable Approach to Gaussian Process Modeling with Qualitative and Quantitative Factors"
-    by Yichi Zhang, Siyu Tao, Wei Chen, and Daniel W. Apley (2018) <arXiv:1806.07504>.
+    The optimization of the likelihood function is done using a successive approximation/relaxation algorithm similar to another GP modeling package "GPM".
+    The modeling method is published in "A Latent Variable Approach to Gaussian Process Modeling with Qualitative and Quantitative Factors"
+    by Yichi Zhang, Siyu Tao, Wei Chen, and Daniel W. Apley (2018) <arXiv:1806.07504>. The package is developed in IDEAL of Northwestern University.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Imports: lhs(>= 0.14), randtoolbox(>= 1.17), lattice(>= 0.20-34)
-Depends: R (>= 3.5.0), stats (>= 3.2.5), parallel (>= 3.2.5)
+Imports: lhs(>= 0.14), randtoolbox(>= 1.17)
+Depends: R (>= 3.4.0), stats (>= 3.2.5), parallel (>= 3.2.5)
 Repository: CRAN
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2018-07-30 22:42:42 UTC; SiyuTao
-Date/Publication: 2018-07-31 10:20:10 UTC
+Packaged: 2018-11-13 18:35:34 UTC; SiyuTao
+Date/Publication: 2018-11-14 08:20:06 UTC

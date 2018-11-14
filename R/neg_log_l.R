@@ -48,25 +48,26 @@ neg_log_l <- function(hyperparam, p_quant, p_qual, lvs_qual, n_lvs_qual, dim_z,
   }
   R <- (R + t(R))/2
 
-  raw_min_eig = sort(eigen(R, symmetric = TRUE, only.values = TRUE)$values)[1]
+  raw_min_eig = min(eigen(R, symmetric = TRUE, only.values = TRUE)$values)
   if (raw_min_eig < min_eig){
     R = R + diag(x = 1, k, k)*(min_eig - raw_min_eig)
   }
 
-  LT <- t(chol(R)) # R = t(L)%*%L = LT%*%t(LT)
-  MTLinv <- t(solve(LT, M))
-  beta_hat <- MTLinv%*%solve(LT, Y)/sum(MTLinv^2)
-  temp <- solve(LT, Y - M%*%beta_hat)
+  L <- t(chol(R)) # R = L%*%t(L)
+  LinvM <- solve(L, M)
+  beta_hat <- t(LinvM)%*%solve(L, Y)/sum(LinvM^2)
+  beta_hat <- as.numeric(beta_hat)
+  temp <- solve(L, Y - M*beta_hat)
   sigma2 <- sum(temp^2)/k
-
-  det_R <- det(R)
-  if ( sigma2 <= 1e-300) {
+  if ( sigma2 < 1e-300) {
     sigma2 <- 1e-300
   }
-  if (det_R <= 1e-300) {
+
+  det_R <- det(R)
+  if (det_R < 1e-300) {
     det_R <- 1e-300
   }
-  n_log_l <- k*log(sigma2) + log(abs(det_R))
+  n_log_l <- k*log(sigma2) + log(det_R)
 
   return(n_log_l)
 }

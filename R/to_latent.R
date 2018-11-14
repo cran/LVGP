@@ -8,7 +8,7 @@
 #' @param p_qual Number of qualitative variables
 #' @param z_vec Latent variable parameters, i.e., latent variable values for each level of qualitative/categorical variables
 #' @param dim_z Dimensionality of latent variables, usually 1 or 2
-#' @param k Number of data points, \code{nrow(X_quant)} or \code{nrow(X_qual)}
+#' @param k Number of data points, equal to \code{nrow(X_qual)}
 #'
 #' @return Matrix containing transformed data
 #'

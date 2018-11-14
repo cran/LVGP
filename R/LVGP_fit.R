@@ -190,10 +190,10 @@ LVGP_fit <- function(X, Y, ind_qual = NULL, dim_z = 2, eps = 10^(seq(-1, -8, len
     temp_ind <- p_quant
     for (i in 1:p_qual) {
       n_lvs <- n_lvs_qual[i]
-      lb_ini[temp_ind+2*dim_z] <- -1e-4
-      ub_ini[temp_ind+2*dim_z] <- 1e-4
-      lb_lat[temp_ind+2*dim_z] <- -1e-4
-      ub_lat[temp_ind+2*dim_z] <- 1e-4
+      lb_ini[temp_ind+dim_z] <- -1e-4
+      ub_ini[temp_ind+dim_z] <- 1e-4
+      lb_lat[temp_ind+dim_z] <- -1e-4
+      ub_lat[temp_ind+dim_z] <- 1e-4
       temp_ind <- temp_ind + dim_z*(n_lvs-1)
     }
   }
@@ -245,7 +245,7 @@ LVGP_fit <- function(X, Y, ind_qual = NULL, dim_z = 2, eps = 10^(seq(-1, -8, len
   # prepare parallel end
   n_try <- length(eps)
   optim_hist <- list()
-  optim_hist$hyper0[[1]] <- hyper0
+  #optim_hist$hyper0[[1]] <- hyper0
   for (i_try in 1:n_try) {
     eps_i <- eps[i_try]
     n_opt_i <- nrow(hyper0)
@@ -320,7 +320,7 @@ LVGP_fit <- function(X, Y, ind_qual = NULL, dim_z = 2, eps = 10^(seq(-1, -8, len
 
   ## post-processing
   if (!noise) {
-    id_best_try <- length(eps)
+    id_best_try <- n_try
   } else {
     id_best_try <- which.min(optim_hist$obj_sol_best)
   }
@@ -341,7 +341,6 @@ LVGP_fit <- function(X, Y, ind_qual = NULL, dim_z = 2, eps = 10^(seq(-1, -8, len
     ind_temp <- as.integer(0)
     for (i in 1:p_qual) {
       n_lvs <- n_lvs_qual[i]
-      lvs <- lvs_qual[[i]]
       z_i <- z_vec[(dim_z*(ind_temp)+1) : (dim_z*(ind_temp+n_lvs-1))]
       ind_temp <- ind_temp+n_lvs-1
       mat_tmp <- matrix(0, nrow = n_lvs, ncol = dim_z)
@@ -363,7 +362,7 @@ LVGP_fit <- function(X, Y, ind_qual = NULL, dim_z = 2, eps = 10^(seq(-1, -8, len
   }
   R <- (R + t(R))/2
 
-  raw_min_eig = sort(eigen(R, symmetric = TRUE, only.values = TRUE)$values)[1]
+  raw_min_eig = min(eigen(R, symmetric = TRUE, only.values = TRUE)$values)
   if (raw_min_eig < eps[id_best_try]) {
     nug_opt <- eps[id_best_try] - raw_min_eig
     R <- R + diag(x = 1, k, k)*nug_opt
@@ -371,15 +370,18 @@ LVGP_fit <- function(X, Y, ind_qual = NULL, dim_z = 2, eps = 10^(seq(-1, -8, len
     nug_opt <- 0
   }
 
-  LT <- t(chol(R)) # R = t(L)%*%L = LT%*%t(LT)
-  LTinv <- solve(LT)
-  MTLinv <- t(solve(LT, M))
-  MTRinvM <- sum(MTLinv^2)
-  beta_hat <- MTLinv%*%solve(LT, Y)/MTRinvM
+  L <- t(chol(R)) # R = L%*%t(L)
+  Linv <- solve(L)
+  LinvM <- solve(L, M)
+  MTRinvM <- sum(LinvM^2)
+  beta_hat <- t(LinvM)%*%solve(L, Y)/MTRinvM
   beta_hat <- as.numeric(beta_hat)
-  temp <- solve(LT, Y - M*beta_hat)
+  temp <- solve(L, Y - M*beta_hat)
   sigma2 <- sum(temp^2)/k
-  RinvPYminusMbetaP <- solve(t(LT), temp)
+  if ( sigma2 < 1e-300) {
+    sigma2 <- 1e-300
+  }
+  RinvPYminusMbetaP <- solve(t(L), temp)
 
   ## Save the fitted model
   model <- NULL
@@ -393,7 +395,7 @@ LVGP_fit <- function(X, Y, ind_qual = NULL, dim_z = 2, eps = 10^(seq(-1, -8, len
                      'ind_qual' = ind_qual, 'lvs_qual' = lvs_qual, 'n_lvs_qual' = n_lvs_qual,
                      'p_all' = p_all, 'p_quant' = p_quant, 'p_qual' = p_qual)
   model$fit_detail <- list('beta_hat' = beta_hat, 'sigma2'=sigma2, 'MTRinvM' = MTRinvM,
-                           'LTinv' = LTinv, 'MTLinv' = MTLinv, 'RinvPYminusMbetaP'=RinvPYminusMbetaP,
+                           'Linv' = Linv, 'LinvM' = LinvM, 'RinvPYminusMbetaP'=RinvPYminusMbetaP,
                            'raw_min_eig' = raw_min_eig,
                            'nug_opt' = nug_opt, 'min_n_log_l' = min_n_log_l, 'fit_time' = fit_time)
   model$optim_hist <- optim_hist

@@ -19,7 +19,7 @@ to_latent(X_qual, lvs_qual, n_lvs_qual, p_qual, z_vec, dim_z, k)
 
 \item{dim_z}{Dimensionality of latent variables, usually 1 or 2}
 
-\item{k}{Number of data points, \code{nrow(X_quant)} or \code{nrow(X_qual)}}
+\item{k}{Number of data points, equal to \code{nrow(X_qual)}}
 }
 \value{
 Matrix containing transformed data
