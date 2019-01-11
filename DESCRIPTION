@@ -2,8 +2,8 @@ Package: LVGP
 Type: Package
 Title: Latent Variable Gaussian Process Modeling with Qualitative and
         Quantitative Input Variables
-Version: 2.1.4
-Author: Siyu Tao, Yichi Zhang
+Version: 2.1.5
+Author: Siyu Tao, Yichi Zhang, Daniel W. Apley, Wei Chen
 Maintainer: Siyu Tao <siyutao2020@u.northwestern.edu>
 Description: Fit response surfaces for datasets with latent-variable Gaussian process modeling, predict responses for new inputs, and plot latent variables locations in the latent space (only 1D or 2D).
     The input variables of the datasets can be quantitative, qualitative/categorical or mixed.
@@ -19,5 +19,5 @@ Depends: R (>= 3.4.0), stats (>= 3.2.5), parallel (>= 3.2.5)
 Repository: CRAN
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2018-11-13 18:35:34 UTC; SiyuTao
-Date/Publication: 2018-11-14 08:20:06 UTC
+Packaged: 2019-01-11 00:58:39 UTC; SiyuTao
+Date/Publication: 2019-01-11 07:50:03 UTC

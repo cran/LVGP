@@ -65,7 +65,6 @@ LVGP_plot <- function(model, ind_qual_plot = NULL){
   dim_z <- model$qual_param$dim_z
   z <- model$qual_param$z
   lvs_qual <- model$data$lvs_qual
-  n_lvs_qual <- model$data$n_lvs_qual
 
   ## plotting
   for (i in 1:n_plot) {
