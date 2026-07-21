@@ -7,9 +7,9 @@
 #'     Set to a non-zero value to calculate \code{MSE}.
 #'
 #' @return A prediction list containing the following components:
-#' \itemize{
-#' \item{\code{Y_hat}} {A vector containing the mean prediction values}
-#' \item{\code{MSE}} {A vector containing the prediction uncertainty (i.e., the covariance or covariance matrix for the output(s) at prediction location(s)) }
+#' \describe{
+#' \item{Y_hat}{A vector containing the mean prediction values}
+#' \item{MSE}{A vector containing the prediction uncertainty (i.e., the covariance or covariance matrix for the output(s) at prediction location(s))}
 #' }
 #'
 #' @export
@@ -29,7 +29,7 @@
 LVGP_predict <-  function(X_new, model, MSE_on = 0){
 
   ## import model and check inputs
-  if (class(model) != "LVGP model"){
+  if (!inherits(model, "LVGP model")){
     stop('    The 2nd input should be a model of class "LVGP model".')
   }
   if (length(MSE_on)!=1){

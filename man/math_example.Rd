@@ -18,7 +18,7 @@ The dataset can be generated with the code at the end of this description file.
 data(math_example)
 }
 \description{
-Data are sampled from the modified math function based on the first example in the paper listed in code{references}.
+Data are sampled from the modified math function based on the first example in the paper listed in \code{references}.
 There are still 2 quantitative and 1 qualitative variables, but the qualitative variable has only 3 levels.
 For each level, there are 8 training data points and 30 testing data points, all generated with Latin hypercube sampling.
 In total, there are 24 training data points and 90 testing data points.

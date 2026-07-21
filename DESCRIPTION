@@ -2,22 +2,37 @@ Package: LVGP
 Type: Package
 Title: Latent Variable Gaussian Process Modeling with Qualitative and
         Quantitative Input Variables
-Version: 2.1.5
-Author: Siyu Tao, Yichi Zhang, Daniel W. Apley, Wei Chen
-Maintainer: Siyu Tao <siyutao2020@u.northwestern.edu>
-Description: Fit response surfaces for datasets with latent-variable Gaussian process modeling, predict responses for new inputs, and plot latent variables locations in the latent space (only 1D or 2D).
-    The input variables of the datasets can be quantitative, qualitative/categorical or mixed.
-    The output variable of the datasets is a scalar (quantitative).
-    The optimization of the likelihood function is done using a successive approximation/relaxation algorithm similar to another GP modeling package "GPM".
-    The modeling method is published in "A Latent Variable Approach to Gaussian Process Modeling with Qualitative and Quantitative Factors"
-    by Yichi Zhang, Siyu Tao, Wei Chen, and Daniel W. Apley (2018) <arXiv:1806.07504>. The package is developed in IDEAL of Northwestern University.
+Version: 2.1.6
+Authors@R: c(
+    person("Siyu", "Tao", email = "siyutao2020@u.northwestern.edu", role = c("aut", "cre")),
+    person("Yichi", "Zhang", role = "aut"),
+    person("Daniel W.", "Apley", role = "aut"),
+    person("Wei", "Chen", role = "aut")
+    )
+Description: Fit response surfaces for datasets with latent-variable Gaussian
+    process modeling, predict responses for new inputs, and plot latent
+    variables locations in the latent space (only 1D or 2D). The input
+    variables of the datasets can be quantitative, qualitative/categorical or
+    mixed. The output variable of the datasets is a scalar (quantitative). The
+    optimization of the likelihood function is done using a successive
+    approximation/relaxation algorithm similar to another GP modeling package
+    "GPM". The modeling method is published in "A Latent Variable Approach to
+    Gaussian Process Modeling with Qualitative and Quantitative Factors" by
+    Yichi Zhang, Siyu Tao, Wei Chen, and Daniel W. Apley (2018)
+    <doi:10.48550/arXiv.1806.07504>. The package is developed in IDEAL of
+    Northwestern University.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Imports: lhs(>= 0.14), randtoolbox(>= 1.17)
 Depends: R (>= 3.4.0), stats (>= 3.2.5), parallel (>= 3.2.5)
-Repository: CRAN
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-01-11 00:58:39 UTC; SiyuTao
-Date/Publication: 2019-01-11 07:50:03 UTC
+Packaged: 2026-07-21 14:50:57 UTC; sto8
+Author: Siyu Tao [aut, cre],
+  Yichi Zhang [aut],
+  Daniel W. Apley [aut],
+  Wei Chen [aut]
+Maintainer: Siyu Tao <siyutao2020@u.northwestern.edu>
+Repository: CRAN
+Date/Publication: 2026-07-21 16:20:08 UTC

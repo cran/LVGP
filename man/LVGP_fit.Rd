@@ -42,14 +42,14 @@ LVGP_fit(X, Y, ind_qual = NULL, dim_z = 2, eps = 10^(seq(-1, -8,
 \item{noise}{The switch for whether the data are assumed noisy}
 }
 \value{
-A model of class "LVGP model" list of the following items:
-\itemize{
-\item{\code{quant_param}} {A list containing the estimated parameter \code{phi} and its search bounds for quantitative variables}
-\item{\code{qual_param}} {A list containing the estimated parameter \code{z} and its dimensionality, vectorized form and search bounds for qualitative variables}
-\item{\code{data}} {A list containing the fitted dataset in verbose format}
-\item{\code{fit_detail}} {A list of more detailed variables for fitting and prediction process}
-\item{\code{optim_hist}} {Optimization history}
-\item{\code{setting}} {Settings for the optimization and fitting process}
+A model of class \code{"LVGP model"}, a list with the following components:
+\describe{
+\item{quant_param}{A list containing the estimated parameter \code{phi} and its search bounds for quantitative variables}
+\item{qual_param}{A list containing the estimated parameter \code{z} and its dimensionality, vectorized form and search bounds for qualitative variables}
+\item{data}{A list containing the fitted dataset in verbose format}
+\item{fit_detail}{A list of more detailed variables for fitting and prediction process}
+\item{optim_hist}{Optimization history}
+\item{setting}{Settings for the optimization and fitting process}
 }
 }
 \description{

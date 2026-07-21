@@ -1,0 +1,8 @@
+CHANGES IN LVGP VERSION 2.1.6
+------------------------------
+
+  o Added Authors@R to DESCRIPTION.
+  o Updated the paper citation in DESCRIPTION to use the arXiv DOI.
+  o Fixed Rd documentation brace issues in LVGP_fit, LVGP_predict, and
+    math_example.
+  o Fixed class() comparison in LVGP_predict() to use inherits().

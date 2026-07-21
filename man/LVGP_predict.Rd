@@ -16,9 +16,9 @@ Set to a non-zero value to calculate \code{MSE}.}
 }
 \value{
 A prediction list containing the following components:
-\itemize{
-\item{\code{Y_hat}} {A vector containing the mean prediction values}
-\item{\code{MSE}} {A vector containing the prediction uncertainty (i.e., the covariance or covariance matrix for the output(s) at prediction location(s)) }
+\describe{
+\item{Y_hat}{A vector containing the mean prediction values}
+\item{MSE}{A vector containing the prediction uncertainty (i.e., the covariance or covariance matrix for the output(s) at prediction location(s))}
 }
 }
 \description{
